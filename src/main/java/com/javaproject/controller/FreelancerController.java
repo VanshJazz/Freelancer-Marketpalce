@@ -35,7 +35,7 @@ public class FreelancerController {
 
         Boolean isFreelancer = (Boolean) session.getAttribute("isFreelancer");
         if (isFreelancer != null && isFreelancer) {
-            return "register"; // show register.jsp for freelancers
+            return "register";
         } else {
             model.addAttribute("error", "You need to login as a freelancer to register for services.");
             return "accessDenied";
@@ -58,7 +58,7 @@ public class FreelancerController {
         Boolean isFreelancer = (Boolean) session.getAttribute("isFreelancer");
 
         if (isFreelancer != null && isFreelancer) {
-            return "registerFreelancer"; // return the actual registration page
+            return "registerFreelancer"; 
         } else {
             model.addAttribute("error", "You need to login as a freelancer to register for services.");
             return "accessDenied";
