@@ -114,16 +114,6 @@
                 <h3>Vansh Jaiswal</h3>
                 <p></p>
             </div>
-            <div class="member">
-                <img src="${pageContext.request.contextPath}/images/Aditya.jpg" alt="Aditya Singh" />
-                <h3>Aditya Singh</h3>
-                <p></p>
-            </div>
-            <div class="member">
-                <img src="${pageContext.request.contextPath}/images/Amit.jpg" alt="Amit Kumar" />
-                <h3>Amit Kumar</h3>
-                <p>UI</p>
-            </div>
         </div>
     </div>
 
