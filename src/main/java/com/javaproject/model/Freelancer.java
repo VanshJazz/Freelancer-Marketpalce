@@ -15,12 +15,12 @@ public class Freelancer {
     private String name;
     private String email;
     private String skill;
-    private String portfolioUrl; // ✅ new field
+    private String portfolioUrl; 
 
-    // No-args constructor
+    
     public Freelancer() {}
 
-    // All-args constructor
+ 
     public Freelancer(String name, String email, String skill, String portfolioUrl) {
         this.name = name;
         this.email = email;
@@ -28,7 +28,7 @@ public class Freelancer {
         this.portfolioUrl = portfolioUrl;
     }
 
-    // Getters and setters
+ 
 
     public Long getId() {
         return id;
