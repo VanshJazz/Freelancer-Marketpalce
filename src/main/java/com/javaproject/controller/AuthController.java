@@ -16,7 +16,7 @@ public class AuthController {
 
     @GetMapping("/login")
     public String showLoginForm(Model model) {
-        model.addAttribute("error", null);  // Clear previous error
+        model.addAttribute("error", null);  
         return "login";
     }
 
@@ -28,22 +28,22 @@ public class AuthController {
 
         User user = userRepository.findByEmail(email);
 
-        if (user != null && user.getPassword().equals(password)) {  // In production, use hashed password comparison!
+        if (user != null && user.getPassword().equals(password)) { 
             session.setAttribute("isLoggedIn", true);
             session.setAttribute("userEmail", user.getEmail());
             session.setAttribute("userName", user.getName());
             session.setAttribute("isFreelancer", user.isFreelancer());
-            return "redirect:/"; // logged in, redirect to home or dashboard
+            return "redirect:/"; 
         } else {
             model.addAttribute("error", "Invalid email or password.");
-            return "login";  // reload login page with error message
+            return "login"; 
         }
     }
 
     @GetMapping("/logout")
     public String logout(HttpSession session) {
-        session.invalidate(); // This will remove all session attributes including isLoggedIn
-        return "redirect:/login"; // redirect to login page after logout
+        session.invalidate(); 
+        return "redirect:/login"; 
     }
 
 }
