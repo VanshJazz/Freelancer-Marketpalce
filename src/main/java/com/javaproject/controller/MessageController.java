@@ -18,7 +18,7 @@ import com.javaproject.model.Message;
 import com.javaproject.model.User;
 import com.javaproject.repository.MessageRepository;
 import com.javaproject.repository.UserRepository;
-import com.javaproject.service.MessageService;  // ✅ Added service import
+import com.javaproject.service.MessageService; 
 
 @Controller
 @RequestMapping("/message")
@@ -31,16 +31,16 @@ public class MessageController {
     private UserRepository userRepository;
 
     @Autowired
-    private MessageService messageService;  // ✅ Inject MessageService
+    private MessageService messageService; 
 
-    // Show message form
+   
     @GetMapping("/send")
     public String showMessageForm(@RequestParam("receiverEmail") String receiverEmail, Model model) {
         model.addAttribute("receiverEmail", receiverEmail);
         return "messageForm";
     }
 
-    // Handle message submission
+
     @PostMapping("/send")
     public String sendMessage(
             @RequestParam String receiverEmail,
@@ -77,7 +77,7 @@ public class MessageController {
         return "redirect:/message/inbox";
     }
 
-    // Show inbox
+   
     @GetMapping("/inbox")
     public String showInbox(HttpSession session, Model model) {
         String userEmail = (String) session.getAttribute("userEmail");
@@ -92,7 +92,7 @@ public class MessageController {
     }
 
 
-    // Show conversation (Work Details View)
+   
     @GetMapping("/conversation")
     public String viewConversation(
             @RequestParam("withEmail") String withEmail,
@@ -110,7 +110,7 @@ public class MessageController {
         return "conversation";
     }
 
-    // Clear all messages
+ 
     @PostMapping("/clearAll")
     public String clearAllMessages(HttpSession session) {
         String userEmail = (String) session.getAttribute("userEmail");
@@ -134,7 +134,7 @@ public class MessageController {
             return "redirect:/login";
         }
         model.addAttribute("receiverEmail", receiverEmail);
-        return "replyForm"; // This is the JSP page name
+        return "replyForm"; 
     }
 
     @PostMapping("/reply")
@@ -155,15 +155,15 @@ public class MessageController {
 
         if (receiver == null) {
             model.addAttribute("error", "Receiver not found.");
-            return "conversation"; // or appropriate view
+            return "conversation";
         }
 
         Message reply = new Message();
         reply.setSender(sender);
         reply.setReceiver(receiver);
-        reply.setWorkNeeded(replyContent);   // Use this field to store your reply text
-        reply.setDateRequired("");           // optional or empty
-        reply.setOtherDetails("");           // optional or empty
+        reply.setWorkNeeded(replyContent);   
+        reply.setDateRequired("");          
+        reply.setOtherDetails("");       
         reply.setTimestamp(System.currentTimeMillis());
 
         messageRepository.save(reply);
@@ -200,7 +200,7 @@ public String sendConversationReply(
 
     if (file != null && !file.isEmpty()) {
         // Save file to server
-        String uploadsDir = "/uploads/"; // relative folder in your server
+        String uploadsDir = "/uploads/"; 
         String realPathToUploads = session.getServletContext().getRealPath(uploadsDir);
         if (!Files.exists(Paths.get(realPathToUploads))) {
             Files.createDirectories(Paths.get(realPathToUploads));
@@ -212,7 +212,7 @@ public String sendConversationReply(
 
         // Save file info in message
         message.setFileName(originalFilename);
-        message.setFilePath(uploadsDir + originalFilename);  // relative path for web access
+        message.setFilePath(uploadsDir + originalFilename)
     }
 
     message.setTimestamp(System.currentTimeMillis());
