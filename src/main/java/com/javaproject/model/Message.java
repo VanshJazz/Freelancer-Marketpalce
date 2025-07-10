@@ -26,12 +26,10 @@ public class Message {
     private String dateRequired;
     private String otherDetails;
     
-    private String fileName;  // original file name
-    private String filePath;  // path on server to serve file
+    private String fileName; 
+    private String filePath; 
 
-    // add getters and setters for these fields
 
-    // Getters and Setters
     
     public Long getId() {
         return id;
