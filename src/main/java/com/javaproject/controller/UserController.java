@@ -26,7 +26,7 @@ public class UserController {
             return "signup";
         }
 
-        // If freelancer is false, remove interestField
+        
         if (!user.isFreelancer()) {
             user.setInterestField(null);
         }
